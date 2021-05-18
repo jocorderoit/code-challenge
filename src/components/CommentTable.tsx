@@ -15,19 +15,17 @@ export const CommentTable: React.FC<Props> = ({ postId }) => {
   );
 
   useEffect(() => {
-    console.log("postId", postId);
     const filter = comments.filter((comment) => {
       return Number(comment.postId) === postId;
     });
-    console.log(filter);
     setFilteredComments(filter);
   }, []);
 
   // Generate each row by iterating posts
   const generateRows = () => {
-    return filteredComments.map((comment) => {
+    return filteredComments.map((comment, i) => {
       return (
-        <tr>
+        <tr key={`comment-row-${i}`}>
           <td>{comment.id}</td>
           <td>{comment.name}</td>
           <td>{comment.email}</td>
@@ -38,7 +36,7 @@ export const CommentTable: React.FC<Props> = ({ postId }) => {
   };
 
   return (
-    <Table striped bordered hover>
+    <Table data-testid="test-comment-table" striped bordered hover>
       {/* Define Table Header */}
       <thead>
         <tr>

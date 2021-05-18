@@ -15,7 +15,13 @@ export const CommentModal: React.FC<Props> = ({
   modalBody,
 }) => {
   return (
-    <Modal show={isShowModal} onHide={handleClose} size="lg" centered>
+    <Modal
+      data-testid="test-modal"
+      show={isShowModal}
+      onHide={handleClose}
+      size="lg"
+      centered
+    >
       <Modal.Header closeButton>
         <Modal.Title>{modalTitle}</Modal.Title>
       </Modal.Header>
